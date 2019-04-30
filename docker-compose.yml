@@ -1,0 +1,43 @@
+version: '3'
+services:
+        jenkinsci:
+                container_name: jenkinsci
+                image: jenkinsci/blueocean:latest
+                ports:
+                    - "8080:8080"
+                    - "50000:50000"
+                volumes:
+                    - "/var/run/docker.sock:/var/run/docker.sock"
+                    - "/root/jenkins_home:/var/jenkins_home"
+
+        selenoid:
+                container_name: selenoid
+                image: aerokube/selenoid:latest-release
+                ports:
+                    - "4444:4444"
+                volumes:
+                    - "/root/selenoid/config:/etc/selenoid"
+                    - "/root/selenoid/video:/opt/selenoid/video"
+                    - "/root/selenoid/logs:/opt/selenoid/logs"
+                    - "/var/run/docker.sock:/var/run/docker.sock"
+                command: ["-log-output-dir","/opt/selenoid/logs"]
+                environment:
+                    - OVERRIDE_VIDEO_OUTPUT_DIR=/selenoid/video
+
+        selenoid-ui:
+                container_name: selenoid-ui
+                image: aerokube/selenoid-ui:latest
+                ports:
+                    - "8888:8080"
+                links:
+                    - selenoid
+                command: ['--selenoid-uri=http://ip172-18-0-11-bj450indqii0008dc390-4444.direct.labs.play-with-docker.com']
+        
+        portainer:
+                container_name: portainer
+                image: portainer/portainer
+                ports:
+                    - "9000:9000"
+                volumes:
+                    - "/root/portainer/data:/data"
+                    - "/var/run/docker.sock:/var/run/docker.sock"
