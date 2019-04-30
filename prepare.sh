@@ -5,3 +5,4 @@ mkdir /roor/selnoid/logs
 mkdir /root/jenkins_home
 mkdir /root/portainer
 mkdir /root/portainer/data
+docker pull selenoid/vnc:chrome_74.0
