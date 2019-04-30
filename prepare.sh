@@ -1,8 +1,8 @@
-mkdir /root/selenoid
-mkdir /root/selenoid/config
-mkdir /root/selenoid/video
-mkdir /roor/selnoid/logs
-mkdir /root/jenkins_home
-mkdir /root/portainer
-mkdir /root/portainer/data
+mkdir /root/pipeline/selenoid
+mkdir /root/pipeline/selenoid/config
+mkdir /root/pipeline/selenoid/video
+mkdir /root/pipeline/selenoid/logs
+mkdir /root/pipeline/jenkins_home
+mkdir /root/pipeline/portainer
+mkdir /root/pipeline/portainer/data
 docker pull selenoid/vnc:chrome_74.0
