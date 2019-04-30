@@ -5,5 +5,5 @@ mkdir /root/pipeline/selenoid/logs
 mkdir /root/pipeline/jenkins_home
 mkdir /root/pipeline/portainer
 mkdir /root/pipeline/portainer/data
-mv browser.json /root/pipeline/selenoid/config/
+mv browsers.json /root/pipeline/selenoid/config/
 docker pull selenoid/vnc:chrome_74.0
