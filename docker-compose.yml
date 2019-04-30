@@ -31,7 +31,7 @@ services:
                     - "8888:8080"
                 links:
                     - selenoid
-                command: ['--selenoid-uri=http://${SELENOIDIP}-4444.direct.labs.play-with-docker.com']
+                command: ['--selenoid-uri=http://${SELENOIDIP}']
         
         portainer:
                 container_name: portainer
